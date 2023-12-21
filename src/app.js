@@ -5,10 +5,9 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
-  //write your code here
-  const palos = ["&#9824;", "&#9827;", "&#9830;", "&#9829;"];
-  const numeros = [
+function randomCard() {
+  let suits = ["&#9824;", "&#9827;", "&#9830;", "&#9829;"];
+  let numbers = [
     "A",
     "2",
     "3",
@@ -27,16 +26,35 @@ window.onload = function() {
   const getRandomElement = Array =>
     Array[Math.floor(Math.random() * Array.length)];
 
-  const randomPalo = getRandomElement(palos);
-  const randomNumber = getRandomElement(numeros);
+  let randomSuits = getRandomElement(suits);
+  let randomNumbers = getRandomElement(numbers);
 
-  const carta = document.querySelector("#carta");
-  const esquinas = Array.from(carta.querySelectorAll(".esquina"));
+  const cornerTElement = document.querySelector("#corner-top");
+  const cornerBElement = document.querySelector("#corner-bot");
+  const numberElement = document.querySelector("#number");
 
-  esquinas.map(esquina => {
-    esquina.innerHTML = randomPalo;
-  });
+  cornerTElement.innerHTML = randomSuits;
+  cornerBElement.innerHTML = randomSuits;
+  numberElement.innerHTML = randomNumbers;
 
-  const numeroElement = carta.querySelector("#number");
-  numeroElement.innerHTML = randomNumber;
+  let cambiaColor =
+    randomSuits == suits[2] || randomSuits == suits[3]
+      ? "text-danger"
+      : "text-dark";
+  cornerBElement.className = cambiaColor;
+  cornerTElement.className = cambiaColor;
+  numberElement.className = cambiaColor;
+}
+
+window.onload = function() {
+  randomCard();
 };
+// En codespaces funciona y en vscode no
+let btn = document.querySelector("#btn");
+btn.addEventListener("click", () => randomCard());
+
+// solución para vscode
+/*document.addEventListener("DOMContentLoaded", function() {
+  let btn = document.querySelector("#btn");
+  btn.addEventListener("click", randomCard);
+});*/

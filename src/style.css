@@ -1,23 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-body {
-  background-color: green;
-  border-style: dashed;
-  border-color: red;
-  padding: 200px;
-  margin: 50px;
+#corner-bot {
+  rotate: 180deg;
 }
 
-#carta {
-  height: 400px;
-  width: 300px;
-}
-
-.numero {
-  font-size: 150px;
-}
-
-.esquina {
-  font-weight: bold;
-  font-size: 50px;
+#card p {
+  font-size: 100px;
 }
